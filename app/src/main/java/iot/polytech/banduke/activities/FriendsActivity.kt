@@ -49,8 +49,8 @@ class FriendsActivity : AppCompatActivity() {
                             val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
                                     applicationContext,R.layout.custom_list_item,usernameList
                             )
-                            listViewFriends.adapter=arrayAdapter
-                            listViewFriends.setOnItemClickListener { adapterView, view, i, id ->
+                            listViewSessions.adapter=arrayAdapter
+                            listViewSessions.setOnItemClickListener { adapterView, view, i, id ->
                                 val intent = Intent(applicationContext, ProfileActivity::class.java)
                                 intent.putExtra("idProfile",userIdList[i])
                                 startActivity(intent)

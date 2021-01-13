@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
         <activity android:name=".activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,12 +19,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SignUpActivity"/>
+        <activity android:name=".activities.SignUpActivity" />
         <activity android:name=".activities.LogInActivity" />
-        <activity android:name=".activities.ProfileActivity"/>
-        <activity android:name=".activities.FriendsActivity"/>
-        <activity android:name=".activities.EditProfileActivity"/>
-        <activity android:name=".activities.SearchActivity"/>
+        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.FriendsActivity" />
+        <activity android:name=".activities.EditProfileActivity" />
+        <activity android:name=".activities.SearchActivity" />
+        <activity android:name=".activities.ListSessionActivity" />
+        <activity android:name=".activities.SessionActivity" />
+        <activity android:name=".activities.EditSessionActivity" />
+        <activity android:name=".activities.GyrDataActivity"/>
+        <activity android:name=".activities.AccDataActivity" />
+        <activity android:name=".activities.GpsDataActivity" />
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_signup.buttonValidate
 import kotlinx.android.synthetic.main.activity_signup.editTextFirstName
-import kotlinx.android.synthetic.main.activity_signup.editTextLastName
+import kotlinx.android.synthetic.main.activity_signup.editTextName
 import kotlinx.android.synthetic.main.activity_signup.editTextMotorcycle
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,13 +25,13 @@ class EditProfileActivity : AppCompatActivity() {
         buttonValidate.setOnClickListener {
 
             val id = LocalStorage.getInstance(applicationContext).user.id
-            val lastname = editTextLastName.text.toString().trim()
+            val lastname = editTextName.text.toString().trim()
             val firstname = editTextFirstName.text.toString().trim()
             val motorcycle = editTextMotorcycle.text.toString().trim()
 
             if(lastname.isEmpty()){
-                editTextLastName.error = "Nom requis"
-                editTextLastName.requestFocus()
+                editTextName.error = "Nom requis"
+                editTextName.requestFocus()
                 return@setOnClickListener
             }
 
@@ -78,7 +78,7 @@ class EditProfileActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        editTextLastName.setText(intent.getStringExtra("lastname"))
+        editTextName.setText(intent.getStringExtra("lastname"))
         editTextFirstName.setText(intent.getStringExtra("firstname"))
         editTextMotorcycle.setText(intent.getStringExtra("motorcycle"))
 

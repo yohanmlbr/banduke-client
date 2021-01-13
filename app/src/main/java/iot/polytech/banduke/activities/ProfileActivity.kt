@@ -10,6 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import iot.polytech.banduke.R
 import iot.polytech.banduke.api.RetrofitClient
+import iot.polytech.banduke.models.ApiResponse
 import iot.polytech.banduke.models.UserDetails
 import iot.polytech.banduke.storage.LocalStorage
 
@@ -36,24 +37,25 @@ class ProfileActivity : AppCompatActivity() {
         else{
             val token = "Bearer "+LocalStorage.getInstance(this).bearerToken
             RetrofitClient.instance.isFriend(myId, id, token)
-                    .enqueue(object: Callback<Boolean> {
-                        override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                    .enqueue(object: Callback<ApiResponse> {
+                        override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                         }
 
-                        override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                            if(response.body()==true){
+                        override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                            if(response.body()?.success==true){
                                 //Est ami => supprimer ami
                                 buttonActionProfile.text="Supprimer"
+                                textViewDateFriend.text="Suivi depuis le "+response.body()?.element
                                 buttonActionProfile.setBackgroundColor(resources.getColor(R.color.colorDanger));
                                 buttonActionProfile.setOnClickListener{
                                     RetrofitClient.instance.deleteFriend(myId, id, token)
-                                            .enqueue(object: Callback<Boolean> {
-                                                override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                                            .enqueue(object: Callback<ApiResponse> {
+                                                override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                                                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                                                 }
-                                                override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                                                    if(response.body()==true){
+                                                override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                                                    if(response.body()?.success==true){
                                                         val intent = Intent(applicationContext, FriendsActivity::class.java)
                                                         startActivity(intent)
                                                         finish()
@@ -69,12 +71,12 @@ class ProfileActivity : AppCompatActivity() {
                                 buttonActionProfile.setBackgroundColor(resources.getColor(R.color.colorSuccess));
                                 buttonActionProfile.setOnClickListener{
                                     RetrofitClient.instance.addFriend(myId, id, token)
-                                            .enqueue(object: Callback<Boolean> {
-                                                override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                                            .enqueue(object: Callback<ApiResponse> {
+                                                override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                                                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                                                 }
-                                                override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                                                    if(response.body()==true){
+                                                override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                                                    if(response.body()?.success==true){
                                                         val intent = Intent(applicationContext, FriendsActivity::class.java)
                                                         startActivity(intent)
                                                         finish()
@@ -106,7 +108,7 @@ class ProfileActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<UserDetails>, response: Response<UserDetails>) {
                         if(response.body()?.id!! > -1){
 
-                            textViewUsernameDB.text = response.body()?.username
+                            textViewNameDB.text = response.body()?.username
                             textViewLastnameDB.text = response.body()?.lastname
                             textViewFirstnameDB.text = response.body()?.firstname
                             textViewMotoDB.text = response.body()?.motorcycle

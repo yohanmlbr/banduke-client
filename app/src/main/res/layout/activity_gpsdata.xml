@@ -5,22 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryBackground"
-    tools:context=".activities.SearchActivity">
+    tools:context=".activities.GpsDataActivity">
 
     <TextView
-        android:id="@+id/textViewSearch"
+        android:id="@+id/textViewGpsData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Rechercher"
+        android:text="Données GPS"
         android:textColor="@color/colorPrimary"
         android:textSize="36sp" />
 
-    <ListView
-        android:id="@+id/listViewSessions"
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChartGps"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/colorWhite"
+        android:padding="5dp"/>
 
 </RelativeLayout>

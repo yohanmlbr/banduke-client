@@ -28,6 +28,11 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, FriendsActivity::class.java)
             startActivity(intent)
         }
+
+        buttonSessions.setOnClickListener{
+            val intent = Intent(applicationContext, ListSessionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

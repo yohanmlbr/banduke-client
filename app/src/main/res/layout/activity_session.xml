@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryBackground"
-    tools:context=".activities.ProfileActivity">
+    tools:context=".activities.SessionActivity">
 
     <TextView
         android:id="@+id/textViewSession"
@@ -13,22 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Profil"
+        android:text="Session"
         android:textColor="@color/colorPrimary"
         android:textSize="36sp" />
 
-    <TextView
-        android:id="@+id/textViewDateFriend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="right"
-        android:textColor="@color/colorWhite"
-        android:textSize="14sp" />
 
     <Button
-        android:id="@+id/buttonActionProfile"
+        android:id="@+id/buttonModify"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -60,7 +51,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingEnd="10dp"
-                android:text="Utilisateur"
+                android:text="Nom"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
@@ -77,7 +68,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingStart="10dp"
-                android:text="username"
+                android:text="name"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
@@ -88,7 +79,7 @@
         <TableRow>
 
             <TextView
-                android:id="@+id/textViewLastname"
+                android:id="@+id/textViewDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1dp"
@@ -98,14 +89,14 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingEnd="10dp"
-                android:text="Nom"
+                android:text="Durée"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 tools:ignore="RtlCompat,RtlSymmetry" />
 
             <TextView
-                android:id="@+id/textViewLastnameDB"
+                android:id="@+id/textViewDurationDB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1dp"
@@ -115,7 +106,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingStart="10dp"
-                android:text="lastname"
+                android:text="duration"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
@@ -126,7 +117,7 @@
         <TableRow>
 
             <TextView
-                android:id="@+id/textViewFirstname"
+                android:id="@+id/textViewStartTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1dp"
@@ -136,14 +127,14 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingEnd="10dp"
-                android:text="Prénom"
+                android:text="Date début"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 tools:ignore="RtlCompat,RtlSymmetry" />
 
             <TextView
-                android:id="@+id/textViewFirstnameDB"
+                android:id="@+id/textViewStartTimeDB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1dp"
@@ -153,7 +144,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingStart="10dp"
-                android:text="firstname"
+                android:text="starttime"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
@@ -164,7 +155,7 @@
         <TableRow>
 
             <TextView
-                android:id="@+id/textViewMoto"
+                android:id="@+id/textViewEndTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1dp"
@@ -174,14 +165,14 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingEnd="10dp"
-                android:text="Moto"
+                android:text="Date Fin"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 tools:ignore="RtlCompat,RtlSymmetry" />
 
             <TextView
-                android:id="@+id/textViewMotoDB"
+                android:id="@+id/textViewEndTimeDB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1dp"
@@ -191,83 +182,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingStart="10dp"
-                android:text="moto"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                tools:ignore="RtlSymmetry" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/textSessions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginVertical="1dp"
-                android:layout_weight="1"
-                android:height="50dp"
-                android:background="@color/colorPrimaryBackground"
-                android:gravity="center"
-                android:paddingEnd="10dp"
-                android:textAlignment="textEnd"
-                android:textSize="20sp"
-                android:textColor="@color/colorPrimary"
-                android:text="Sessions"
-                tools:ignore="RtlCompat,RtlSymmetry" />
-
-            <TextView
-                android:id="@+id/textViewSessionsDB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_weight="1"
-                android:height="50dp"
-                android:background="@color/colorPrimaryBackground"
-                android:gravity="center"
-                android:paddingStart="10dp"
-                android:text="nbsessions"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                tools:ignore="RtlSymmetry" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/textViewSessions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginVertical="1dp"
-                android:layout_weight="1"
-                android:height="50dp"
-                android:background="@color/colorPrimaryBackground"
-                android:gravity="center"
-                android:paddingEnd="10dp"
-                android:textAlignment="textEnd"
-                android:textSize="20sp"
-                android:textColor="@color/colorPrimary"
-                android:text="Amis"
-                tools:ignore="RtlCompat,RtlSymmetry" />
-
-            <TextView
-                android:id="@+id/textViewFriendsDB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_weight="1"
-                android:height="50dp"
-                android:background="@color/colorPrimaryBackground"
-                android:gravity="center"
-                android:paddingStart="10dp"
-                android:text="nbamis"
+                android:text="endtime"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
@@ -276,5 +191,45 @@
         </TableRow>
 
     </TableLayout>
+
+    <Button
+        android:id="@+id/buttonGpsData"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="220dp"
+        android:height="50dp"
+        android:background="@color/colorPrimary"
+        android:text="Données GPS"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/buttonAccData"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="160dp"
+        android:height="50dp"
+        android:background="@color/colorPrimary"
+        android:text="Données accélération"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/buttonGyrData"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:height="50dp"
+        android:background="@color/colorPrimary"
+        android:text="Données gyroscope"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
+
 
 </RelativeLayout>

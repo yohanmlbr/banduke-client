@@ -74,5 +74,4 @@ class LocalStorage private constructor(private val mCtx: Context) {
             return mInstance as LocalStorage
         }
     }
-
 }

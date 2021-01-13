@@ -29,7 +29,7 @@ class SignUpActivity : AppCompatActivity() {
 
             val username = editTextUsername.text.toString().trim()
             val password = editTextPassword.text.toString().trim()
-            val lastname = editTextLastName.text.toString().trim()
+            val lastname = editTextName.text.toString().trim()
             val firstname = editTextFirstName.text.toString().trim()
             val motorcycle = editTextMotorcycle.text.toString().trim()
 
@@ -47,8 +47,8 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             if(lastname.isEmpty()){
-                editTextLastName.error = "Nom requis"
-                editTextLastName.requestFocus()
+                editTextName.error = "Nom requis"
+                editTextName.requestFocus()
                 return@setOnClickListener
             }
 

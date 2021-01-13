@@ -11,51 +11,48 @@ import retrofit2.Callback
 import retrofit2.Response
 import iot.polytech.banduke.R
 import iot.polytech.banduke.api.RetrofitClient
-import iot.polytech.banduke.models.User
+import iot.polytech.banduke.models.SessionIdData
 import iot.polytech.banduke.storage.LocalStorage
 
-class SearchActivity : AppCompatActivity() {
+class ListSessionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
-
+        setContentView(R.layout.activity_listsession)
 
     }
 
 
     override fun onStart() {
         super.onStart()
-        var usernameList = emptyArray<String>();
-        var userIdList = emptyArray<Int>()
-        val myId = LocalStorage.getInstance(this).user.id
+        var sessionList = emptyArray<String>();
+        var sessionIdList = emptyArray<Int>()
+        val id = LocalStorage.getInstance(this).user.id
         val token = "Bearer "+LocalStorage.getInstance(this).bearerToken
-        RetrofitClient.instance.getAllUsers(token)
-                .enqueue(object: Callback<List<User>> {
-                    override fun onFailure(call: Call<List<User>>, t: Throwable) {
+        RetrofitClient.instance.getSessionsByUserId(id, token)
+                .enqueue(object: Callback<List<SessionIdData>> {
+                    override fun onFailure(call: Call<List<SessionIdData>>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
 
-                    override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                    override fun onResponse(call: Call<List<SessionIdData>>, response: Response<List<SessionIdData>>) {
                         if(response.body()?.size!!>0){
                             response.body()!!.forEach {
-                                if(it.id!=myId){
-                                    usernameList=usernameList.plus(it.username)
-                                    userIdList=userIdList.plus(it.id)
-                                }
+                                sessionList=sessionList.plus(it.name)
+                                sessionIdList=sessionIdList.plus(it.id)
                             }
                             val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
-                                    applicationContext,R.layout.custom_list_item,usernameList
+                                    applicationContext,R.layout.custom_list_item,sessionList
                             )
                             listViewSessions.adapter=arrayAdapter
                             listViewSessions.setOnItemClickListener { adapterView, view, i, id ->
-                                val intent = Intent(applicationContext, ProfileActivity::class.java)
-                                intent.putExtra("idProfile",userIdList[i])
+                                val intent = Intent(applicationContext, SessionActivity::class.java)
+                                intent.putExtra("idSession",sessionIdList[i])
                                 startActivity(intent)
                                 finish()
                             }
                         }else{
-                            Toast.makeText(applicationContext, "Aucun autre utilisateur", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, "Vous n'avez aucune session", Toast.LENGTH_LONG).show()
                         }
                     }
 

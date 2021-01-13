@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryBackground"
-    tools:context=".activities.EditProfileActivity">
+    tools:context=".activities.EditSessionActivity">
 
     <TextView
         android:id="@+id/textViewSession"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Profil"
+        android:text="Session"
         android:textColor="@color/colorPrimary"
         android:textSize="36sp" />
 
@@ -23,7 +23,7 @@
         android:layout_above="@id/linearLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:text="Modifier mon profil"
+        android:text="Renommer ma session"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/colorPrimary" />
 
@@ -46,24 +46,6 @@
             android:drawablePadding="5dp"
             android:hint="Nom"
             android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/editTextFirstName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:drawablePadding="5dp"
-            android:hint="Prénom"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/editTextMotorcycle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:drawablePadding="5dp"
-            android:hint="Moto"
-            android:inputType="text" />
 
     </LinearLayout>
 

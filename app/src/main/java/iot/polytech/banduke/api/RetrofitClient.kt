@@ -13,7 +13,6 @@ object RetrofitClient {
                 val original = chain.request()
 
                 val requestBuilder = original.newBuilder()
-                        //.addHeader("Authorization", "Bearer " + TOKEN)
                         .method(original.method(), original.body())
 
                 val request = requestBuilder.build()
