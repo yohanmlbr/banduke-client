@@ -13,9 +13,21 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Données GPS"
+        android:text="GPS"
         android:textColor="@color/colorPrimary"
-        android:textSize="36sp" />
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/buttonAltSpeed"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorPrimary"
+        android:text="Vitesse &amp; altitude"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChartGps"

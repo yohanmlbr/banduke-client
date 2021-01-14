@@ -31,7 +31,7 @@ class EditSessionActivity : AppCompatActivity() {
             }
 
             val token = "Bearer "+LocalStorage.getInstance(this).bearerToken
-            RetrofitClient.instance.renameSessionsById(idSession,name,token)
+            RetrofitClient.instance.renameSessionById(idSession,name,token)
                     .enqueue(object: Callback<ApiResponse>{
                         override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                             Toast.makeText(applicationContext, "Erreur de connexion : "+t.message, Toast.LENGTH_LONG).show()

@@ -7,6 +7,18 @@
     android:background="@color/colorPrimaryBackground"
     tools:context=".activities.ListSessionActivity">
 
+    <Button
+        android:id="@+id/buttonAddSession"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorPrimary"
+        android:text="Ajouter"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
+
     <TextView
         android:id="@+id/textViewSessions"
         android:layout_width="wrap_content"

@@ -8,6 +8,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import iot.polytech.banduke.R
 import iot.polytech.banduke.api.RetrofitClient
+import iot.polytech.banduke.models.AccData
 import iot.polytech.banduke.models.SessionContent
 import iot.polytech.banduke.storage.LocalStorage
 import iot.polytech.banduke.util.DateAxisValueFormatter
@@ -26,26 +27,26 @@ class AccDataActivity : AppCompatActivity() {
         val idSession = intent.getIntExtra("idSession", 0)
         val token = "Bearer "+ LocalStorage.getInstance(this).bearerToken
 
-        RetrofitClient.instance.getSessionContentById(idSession, token)
-                .enqueue(object : Callback<SessionContent> {
-                    override fun onFailure(call: Call<SessionContent>, t: Throwable) {
+        RetrofitClient.instance.getSessionContentAccDataById(idSession, token)
+                .enqueue(object : Callback<List<AccData>> {
+                    override fun onFailure(call: Call<List<AccData>>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
 
-                    override fun onResponse(call: Call<SessionContent>, response: Response<SessionContent>) {
-                        if (response.body()!=null) {
+                    override fun onResponse(call: Call<List<AccData>>, response: Response<List<AccData>>) {
+                        if (response.body()?.size!!>0) {
                             val pointsX: ArrayList<Entry> = ArrayList()
                             val pointsY: ArrayList<Entry> = ArrayList()
                             val pointsZ: ArrayList<Entry> = ArrayList()
-                            val startTime: Long = response.body()?.accData?.get(0)?.accTime?.time!!
-                            response.body()?.accData!!.forEach {
+                            val startTime: Long = response.body()?.get(0)?.accTime?.time!!
+                            response.body()!!.forEach {
                                 pointsX.add(Entry((it.accTime.time-startTime).toFloat(), it.accX.toFloat()))
                                 pointsY.add(Entry((it.accTime.time-startTime).toFloat(), it.accY.toFloat()))
                                 pointsZ.add(Entry((it.accTime.time-startTime).toFloat(), it.accZ.toFloat()))
                             }
-                            val dataSetX:LineDataSet = LineDataSet(pointsX,"Points X")
-                            val dataSetY:LineDataSet = LineDataSet(pointsY,"Points Y")
-                            val dataSetZ:LineDataSet = LineDataSet(pointsZ,"Points Z")
+                            val dataSetX:LineDataSet = LineDataSet(pointsX,"Axe X")
+                            val dataSetY:LineDataSet = LineDataSet(pointsY,"Axe Y")
+                            val dataSetZ:LineDataSet = LineDataSet(pointsZ,"Axe Z")
 
                             dataSetX.color=resources.getColor(R.color.colorDanger)
                             dataSetX.setDrawValues(false)
@@ -68,7 +69,7 @@ class AccDataActivity : AppCompatActivity() {
 
 
                         } else {
-                            Toast.makeText(applicationContext, "Erreur de connexion", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, "Pas de données", Toast.LENGTH_LONG).show()
                         }
                     }
 

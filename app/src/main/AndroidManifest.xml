@@ -28,9 +28,11 @@
         <activity android:name=".activities.ListSessionActivity" />
         <activity android:name=".activities.SessionActivity" />
         <activity android:name=".activities.EditSessionActivity" />
-        <activity android:name=".activities.GyrDataActivity"/>
+        <activity android:name=".activities.GyrDataActivity" />
         <activity android:name=".activities.AccDataActivity" />
         <activity android:name=".activities.GpsDataActivity" />
+        <activity android:name=".activities.AddSessionActivity" />
+        <activity android:name=".activities.AltSpeedDataActivity"></activity>
     </application>
 
 </manifest>

@@ -165,7 +165,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingEnd="10dp"
-                android:text="Date Fin"
+                android:text="Date fin"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"

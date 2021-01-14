@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_friends.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,6 +12,8 @@ import iot.polytech.banduke.R
 import iot.polytech.banduke.api.RetrofitClient
 import iot.polytech.banduke.models.SessionIdData
 import iot.polytech.banduke.storage.LocalStorage
+import kotlinx.android.synthetic.main.activity_friends.listViewSessions
+import kotlinx.android.synthetic.main.activity_listsession.*
 
 class ListSessionActivity : AppCompatActivity() {
 
@@ -20,6 +21,10 @@ class ListSessionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listsession)
 
+        buttonAddSession.setOnClickListener {
+            val intent = Intent(applicationContext, AddSessionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

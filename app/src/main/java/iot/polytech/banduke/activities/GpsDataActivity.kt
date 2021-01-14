@@ -1,5 +1,6 @@
 package iot.polytech.banduke.activities
 
+import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import iot.polytech.banduke.R
@@ -11,11 +12,11 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
 import iot.polytech.banduke.api.RetrofitClient
+import iot.polytech.banduke.models.GpsData
 import iot.polytech.banduke.models.Session
 import iot.polytech.banduke.models.SessionContent
 import iot.polytech.banduke.storage.LocalStorage
 import kotlinx.android.synthetic.main.activity_gpsdata.*
-import kotlinx.android.synthetic.main.activity_session.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,23 +30,35 @@ class GpsDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gpsdata)
 
+
+
         val idSession = intent.getIntExtra("idSession", 0)
         val token = "Bearer "+ LocalStorage.getInstance(this).bearerToken
 
-        RetrofitClient.instance.getSessionContentById(idSession, token)
-                .enqueue(object : Callback<SessionContent> {
-                    override fun onFailure(call: Call<SessionContent>, t: Throwable) {
+        buttonAltSpeed.setOnClickListener {
+            val intent = Intent(applicationContext, AltSpeedDataActivity::class.java)
+            intent.putExtra("idSession", idSession)
+            startActivity(intent)
+        }
+
+        RetrofitClient.instance.getSessionContentGpsDataById(idSession, token)
+                .enqueue(object : Callback<List<GpsData>> {
+                    override fun onFailure(call: Call<List<GpsData>>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
 
-                    override fun onResponse(call: Call<SessionContent>, response: Response<SessionContent>) {
-                        if (response.body()!=null) {
+                    override fun onResponse(call: Call<List<GpsData>>, response: Response<List<GpsData>>) {
+                        if (response.body()?.size!!>0) {
                             val points: ArrayList<Entry> = ArrayList()
-                            response.body()?.gpsData!!.forEach {
+                            response.body()!!.forEach {
                                 points.add(Entry(it.gpsLat.toFloat()*10000, it.gpsLon.toFloat()*10000))
                             }
-                            val dataSet:LineDataSet = LineDataSet(points,"Points GPS")
+                            val dataSet:LineDataSet = LineDataSet(points,"Trajet GPS")
+
                             dataSet.color=resources.getColor(R.color.colorPrimary )
+                            dataSet.setDrawValues(false)
+                            dataSet.setDrawCircles(false)
+
                             val data:LineData = LineData(dataSet)
 
                             lineChartGps.data=data
@@ -54,7 +67,7 @@ class GpsDataActivity : AppCompatActivity() {
                             lineChartGps.animateY(200)
 
                         } else {
-                            Toast.makeText(applicationContext, "Erreur de connexion", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, "Pas de données", Toast.LENGTH_LONG).show()
                         }
                     }
 

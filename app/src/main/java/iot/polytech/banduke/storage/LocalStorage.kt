@@ -2,6 +2,7 @@ package iot.polytech.banduke.storage
 
 import android.content.Context
 import iot.polytech.banduke.models.EditUser
+import iot.polytech.banduke.models.SessionContent
 import iot.polytech.banduke.models.User
 
 

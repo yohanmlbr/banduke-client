@@ -55,13 +55,33 @@ interface Api {
 
     @Headers("Content-Type: application/json")
     @GET("session/{id}")
-    fun getSessionById(@Path("id") id: Int, @Header("Authorization") token: String):Call<Session>
+    fun getSessionById(@Path("id") id: Int, @Header("Authorization") token: String):Call<SessionWoutContent>
 
     @Headers("Content-Type: application/json")
     @GET("session/{id}/content")
     fun getSessionContentById(@Path("id") id: Int, @Header("Authorization") token: String):Call<SessionContent>
 
     @Headers("Content-Type: application/json")
+    @GET("session/{id}/content/gps")
+    fun getSessionContentGpsDataById(@Path("id") id: Int, @Header("Authorization") token: String):Call<List<GpsData>>
+
+    @Headers("Content-Type: application/json")
+    @GET("session/{id}/content/acc")
+    fun getSessionContentAccDataById(@Path("id") id: Int, @Header("Authorization") token: String):Call<List<AccData>>
+
+    @Headers("Content-Type: application/json")
+    @GET("session/{id}/content/gyr")
+    fun getSessionContentGyrDataById(@Path("id") id: Int, @Header("Authorization") token: String):Call<List<GyrData>>
+
+    @Headers("Content-Type: application/json")
+    @GET("session/{id}/content/calc")
+    fun getSessionContentCalcDataById(@Path("id") id: Int, @Header("Authorization") token: String):Call<List<CalcData>>
+
+    @Headers("Content-Type: application/json")
     @PUT("session/{id}/rename")
-    fun renameSessionsById(@Path("id") id: Int, @Body newName: String, @Header("Authorization") token: String):Call<ApiResponse>
+    fun renameSessionById(@Path("id") id: Int, @Body newName: String, @Header("Authorization") token: String):Call<ApiResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("session/{userId}/add")
+    fun addSessionByUserId(@Path("userId") userId: Int, @Body rawData: String, @Header("Authorization") token: String):Call<Session>
 }
