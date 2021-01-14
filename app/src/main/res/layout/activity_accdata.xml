@@ -21,9 +21,133 @@
         android:id="@+id/lineChartAcc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="50dp"
         android:background="@color/colorWhite"
         android:padding="5dp"/>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="80dp"
+        android:background="@color/colorPrimary">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textViewBvg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryBackground"
+                android:text="Best virage gauche"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                tools:ignore="RtlCompat,RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/textViewBvd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryBackground"
+                android:paddingStart="10dp"
+                android:text="Best virage droite"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/textViewBa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryBackground"
+                android:paddingStart="10dp"
+                android:text="Best accélération"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/textViewBf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryBackground"
+                android:paddingStart="10dp"
+                android:text="Best freinage"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                tools:ignore="RtlSymmetry" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textViewBvgDB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="20dp"
+                android:background="@color/colorPrimaryBackground"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                tools:ignore="RtlCompat,RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/textViewBvdDB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="20dp"
+                android:background="@color/colorPrimaryBackground"
+                android:paddingStart="10dp"
+                android:text="-"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/textViewBaDB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="20dp"
+                android:background="@color/colorPrimaryBackground"
+                android:paddingStart="10dp"
+                android:text="-"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/textViewBfDB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="20dp"
+                android:background="@color/colorPrimaryBackground"
+                android:paddingStart="10dp"
+                android:text="-"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                tools:ignore="RtlSymmetry" />
+
+        </TableRow>
+
+    </TableLayout>
 
 </RelativeLayout>

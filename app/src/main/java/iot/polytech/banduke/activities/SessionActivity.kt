@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import iot.polytech.banduke.R
 import iot.polytech.banduke.api.RetrofitClient
-import iot.polytech.banduke.models.Session
-import iot.polytech.banduke.models.SessionContent
 import iot.polytech.banduke.models.SessionWoutContent
 import iot.polytech.banduke.storage.LocalStorage
 import kotlinx.android.synthetic.main.activity_session.*
@@ -15,7 +13,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class SessionActivity : AppCompatActivity() {
@@ -53,8 +50,8 @@ class SessionActivity : AppCompatActivity() {
 
 
 
-        //Modifier session
-        buttonModify.setOnClickListener{
+        //Renommer session
+        buttonRename.setOnClickListener{
             val intent = Intent(applicationContext, EditSessionActivity::class.java)
             intent.putExtra("name", textViewNameDB.text)
             intent.putExtra("idSession", idSession)
@@ -80,8 +77,12 @@ class SessionActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        buttonCalcData.setOnClickListener {
+            val intent = Intent(applicationContext, CalcDataActivity::class.java)
+            intent.putExtra("idSession", idSession)
+            startActivity(intent)
+        }
     }
-
 
     override fun onStart() {
         super.onStart()

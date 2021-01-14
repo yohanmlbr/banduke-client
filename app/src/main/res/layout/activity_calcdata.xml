@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryBackground"
-    tools:context=".activities.AltSpeedDataActivity">
+    tools:context=".activities.CalcDataActivity">
 
     <TextView
         android:id="@+id/textViewAltSpeedData"
@@ -13,22 +13,22 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Vitesse et altitude"
+        android:text="Autres"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/textViewSpeed"
+        android:id="@+id/textViewDist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="90dp"
-        android:text="Vitesse"
+        android:text="Distance"
         android:textColor="@color/colorPrimary"
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/textViewSpeedDB"
+        android:id="@+id/textViewDistDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
@@ -39,7 +39,7 @@
         android:textSize="15sp" />
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lineChartSpeed"
+        android:id="@+id/lineChartDist"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="120dp"
@@ -48,17 +48,28 @@
         android:padding="5dp"/>
 
     <TextView
-        android:id="@+id/textViewAlt"
+        android:id="@+id/textViewDeniv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="360dp"
-        android:text="Altitude"
+        android:text="Dénivelé"
         android:textColor="@color/colorPrimary"
         android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/textViewDenivDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="360dp"
+        android:layout_alignParentRight="true"
+        android:text="-"
+        android:textColor="@color/colorWhite"
+        android:textSize="15sp" />
+
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lineChartAlt"
+        android:id="@+id/lineChartDeniv"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="390dp"

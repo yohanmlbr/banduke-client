@@ -19,14 +19,14 @@
 
 
     <Button
-        android:id="@+id/buttonModify"
+        android:id="@+id/buttonRename"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:background="@color/colorPrimary"
-        android:text="Modifier"
+        android:text="Renommer"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite" />
 
@@ -68,7 +68,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingStart="10dp"
-                android:text="name"
+                android:text="-"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
@@ -106,7 +106,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingStart="10dp"
-                android:text="duration"
+                android:text="-"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
@@ -144,7 +144,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingStart="10dp"
-                android:text="starttime"
+                android:text="-"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
@@ -182,7 +182,7 @@
                 android:background="@color/colorPrimaryBackground"
                 android:gravity="center"
                 android:paddingStart="10dp"
-                android:text="endtime"
+                android:text="-"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
@@ -228,6 +228,19 @@
         android:height="50dp"
         android:background="@color/colorPrimary"
         android:text="Données gyroscope"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/buttonCalcData"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:height="50dp"
+        android:background="@color/colorPrimary"
+        android:text="Données autres"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite" />
 

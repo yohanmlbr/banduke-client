@@ -32,7 +32,8 @@
         <activity android:name=".activities.AccDataActivity" />
         <activity android:name=".activities.GpsDataActivity" />
         <activity android:name=".activities.AddSessionActivity" />
-        <activity android:name=".activities.AltSpeedDataActivity"></activity>
+        <activity android:name=".activities.AltSpeedDataActivity" />
+        <activity android:name=".activities.CalcDataActivity"/>
     </application>
 
 </manifest>

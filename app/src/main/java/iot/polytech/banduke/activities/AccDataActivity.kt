@@ -9,15 +9,17 @@ import com.github.mikephil.charting.data.LineDataSet
 import iot.polytech.banduke.R
 import iot.polytech.banduke.api.RetrofitClient
 import iot.polytech.banduke.models.AccData
-import iot.polytech.banduke.models.SessionContent
 import iot.polytech.banduke.storage.LocalStorage
-import iot.polytech.banduke.util.DateAxisValueFormatter
+import iot.polytech.banduke.util.AccAxisValueFormatter
+import iot.polytech.banduke.util.MiniSecAxisValueFormatter
 import kotlinx.android.synthetic.main.activity_accdata.*
+import kotlinx.android.synthetic.main.activity_accdata.textViewBvdDB
+import kotlinx.android.synthetic.main.activity_accdata.textViewBvgDB
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.absoluteValue
 
 class AccDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,11 +40,23 @@ class AccDataActivity : AppCompatActivity() {
                             val pointsX: ArrayList<Entry> = ArrayList()
                             val pointsY: ArrayList<Entry> = ArrayList()
                             val pointsZ: ArrayList<Entry> = ArrayList()
+                            var bvg: Double = 0.0 //best virage gauche
+                            var bvd: Double = 0.0 //best virage droite
+                            var ba: Double = 0.0 //best acceleration
+                            var bf: Double = 0.0 //best freinage
                             val startTime: Long = response.body()?.get(0)?.accTime?.time!!
                             response.body()!!.forEach {
                                 pointsX.add(Entry((it.accTime.time-startTime).toFloat(), it.accX.toFloat()))
                                 pointsY.add(Entry((it.accTime.time-startTime).toFloat(), it.accY.toFloat()))
                                 pointsZ.add(Entry((it.accTime.time-startTime).toFloat(), it.accZ.toFloat()))
+                                if(it.accY>bvg)
+                                    bvg=it.accY
+                                if(it.accY<bvd)
+                                    bvd=it.accY
+                                if(it.accX>ba)
+                                    ba=it.accX
+                                if(it.accX<bf)
+                                    bf=it.accX
                             }
                             val dataSetX:LineDataSet = LineDataSet(pointsX,"Axe X")
                             val dataSetY:LineDataSet = LineDataSet(pointsY,"Axe Y")
@@ -65,8 +79,14 @@ class AccDataActivity : AppCompatActivity() {
                             lineChartAcc.data=data
                             lineChartAcc.description.isEnabled=false
                             lineChartAcc.axisRight.setDrawLabels(false)
+                            lineChartAcc.xAxis.valueFormatter = MiniSecAxisValueFormatter()
+                            lineChartAcc.axisLeft.valueFormatter = AccAxisValueFormatter()
                             lineChartAcc.animateY(200)
 
+                            textViewBvgDB.text=bvg.absoluteValue.toString()+"g"
+                            textViewBvdDB.text=bvd.absoluteValue.toString()+"g"
+                            textViewBaDB.text=ba.absoluteValue.toString()+"g"
+                            textViewBfDB.text=bf.absoluteValue.toString()+"g"
 
                         } else {
                             Toast.makeText(applicationContext, "Pas de données", Toast.LENGTH_LONG).show()

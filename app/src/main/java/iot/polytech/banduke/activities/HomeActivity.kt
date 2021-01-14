@@ -17,6 +17,7 @@ class HomeActivity : AppCompatActivity() {
             LocalStorage.getInstance(this).clear()
             val intent = Intent(applicationContext, LogInActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         buttonProfile.setOnClickListener{
