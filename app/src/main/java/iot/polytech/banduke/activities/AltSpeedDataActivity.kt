@@ -12,7 +12,7 @@ import iot.polytech.banduke.models.GpsData
 import iot.polytech.banduke.storage.LocalStorage
 import iot.polytech.banduke.util.KmHAxisValueFormatter
 import iot.polytech.banduke.util.MetreAxisValueFormatter
-import iot.polytech.banduke.util.MiniSecAxisValueFormatter
+import iot.polytech.banduke.util.SecAxisValueFormatter
 import kotlinx.android.synthetic.main.activity_altspeeddata.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -62,14 +62,14 @@ class AltSpeedDataActivity : AppCompatActivity() {
                             lineChartSpeed.data=dataV
                             lineChartSpeed.description.isEnabled=false
                             lineChartSpeed.axisRight.setDrawLabels(false)
-                            lineChartSpeed.xAxis.valueFormatter = MiniSecAxisValueFormatter()
+                            lineChartSpeed.xAxis.valueFormatter = SecAxisValueFormatter()
                             lineChartSpeed.axisLeft.valueFormatter = KmHAxisValueFormatter()
                             lineChartSpeed.animateY(200)
 
                             lineChartAlt.data=dataA
                             lineChartAlt.description.isEnabled=false
                             lineChartAlt.axisRight.setDrawLabels(false)
-                            lineChartAlt.xAxis.valueFormatter = MiniSecAxisValueFormatter()
+                            lineChartAlt.xAxis.valueFormatter = SecAxisValueFormatter()
                             lineChartAlt.axisLeft.valueFormatter = MetreAxisValueFormatter()
                             lineChartAlt.animateY(200)
 

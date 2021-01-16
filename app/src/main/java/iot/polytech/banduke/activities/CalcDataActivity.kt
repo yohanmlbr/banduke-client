@@ -6,15 +6,12 @@ import android.widget.Toast
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IAxisValueFormatter
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.formatter.ValueFormatter
 import iot.polytech.banduke.R
 import iot.polytech.banduke.api.RetrofitClient
 import iot.polytech.banduke.models.CalcData
 import iot.polytech.banduke.storage.LocalStorage
 import iot.polytech.banduke.util.MetreAxisValueFormatter
-import iot.polytech.banduke.util.MiniSecAxisValueFormatter
+import iot.polytech.banduke.util.SecAxisValueFormatter
 import kotlinx.android.synthetic.main.activity_calcdata.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -78,14 +75,14 @@ class CalcDataActivity : AppCompatActivity() {
                             lineChartDeniv.data = dataDeniv
                             lineChartDeniv.description.isEnabled = false
                             lineChartDeniv.axisRight.setDrawLabels(false)
-                            lineChartDeniv.xAxis.valueFormatter = MiniSecAxisValueFormatter()
+                            lineChartDeniv.xAxis.valueFormatter = SecAxisValueFormatter()
                             lineChartDeniv.axisLeft.valueFormatter = MetreAxisValueFormatter()
                             lineChartDeniv.animateY(200)
 
                             lineChartDist.data = dataDist
                             lineChartDist.description.isEnabled = false
                             lineChartDist.axisRight.setDrawLabels(false)
-                            lineChartDist.xAxis.valueFormatter = MiniSecAxisValueFormatter()
+                            lineChartDist.xAxis.valueFormatter = SecAxisValueFormatter()
                             lineChartDist.axisLeft.valueFormatter = MetreAxisValueFormatter()
                             lineChartDist.animateY(200)
 

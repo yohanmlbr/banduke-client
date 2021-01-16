@@ -8,13 +8,10 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import iot.polytech.banduke.R
 import iot.polytech.banduke.api.RetrofitClient
-import iot.polytech.banduke.models.GpsData
 import iot.polytech.banduke.models.GyrData
-import iot.polytech.banduke.models.SessionContent
 import iot.polytech.banduke.storage.LocalStorage
-import iot.polytech.banduke.util.AccAxisValueFormatter
 import iot.polytech.banduke.util.AngleAxisValueFormatter
-import iot.polytech.banduke.util.MiniSecAxisValueFormatter
+import iot.polytech.banduke.util.SecAxisValueFormatter
 import kotlinx.android.synthetic.main.activity_gyrdata.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -72,7 +69,7 @@ class GyrDataActivity : AppCompatActivity() {
                             lineChartGyr.data=data
                             lineChartGyr.description.isEnabled=false
                             lineChartGyr.axisRight.setDrawLabels(false)
-                            lineChartGyr.xAxis.valueFormatter = MiniSecAxisValueFormatter()
+                            lineChartGyr.xAxis.valueFormatter = SecAxisValueFormatter()
                             lineChartGyr.axisLeft.valueFormatter = AngleAxisValueFormatter()
                             lineChartGyr.animateY(200)
 

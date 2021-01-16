@@ -11,7 +11,7 @@ import iot.polytech.banduke.api.RetrofitClient
 import iot.polytech.banduke.models.AccData
 import iot.polytech.banduke.storage.LocalStorage
 import iot.polytech.banduke.util.AccAxisValueFormatter
-import iot.polytech.banduke.util.MiniSecAxisValueFormatter
+import iot.polytech.banduke.util.SecAxisValueFormatter
 import kotlinx.android.synthetic.main.activity_accdata.*
 import kotlinx.android.synthetic.main.activity_accdata.textViewBvdDB
 import kotlinx.android.synthetic.main.activity_accdata.textViewBvgDB
@@ -79,7 +79,7 @@ class AccDataActivity : AppCompatActivity() {
                             lineChartAcc.data=data
                             lineChartAcc.description.isEnabled=false
                             lineChartAcc.axisRight.setDrawLabels(false)
-                            lineChartAcc.xAxis.valueFormatter = MiniSecAxisValueFormatter()
+                            lineChartAcc.xAxis.valueFormatter = SecAxisValueFormatter()
                             lineChartAcc.axisLeft.valueFormatter = AccAxisValueFormatter()
                             lineChartAcc.animateY(200)
 

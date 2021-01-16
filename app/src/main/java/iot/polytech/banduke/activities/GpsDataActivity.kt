@@ -45,7 +45,7 @@ class GpsDataActivity : AppCompatActivity() {
                         if (response.body()?.size!! > 0) {
                             val points: ArrayList<Entry> = ArrayList()
                             response.body()!!.forEach {
-                                points.add(Entry(it.gpsLat.toFloat() * 10000, it.gpsLon.toFloat() * 10000))
+                                points.add(Entry(it.gpsLon.toFloat() * 10000, it.gpsLat.toFloat() * 10000))
                             }
                             val dataSet: LineDataSet = LineDataSet(points, "Trajet GPS")
 
@@ -56,10 +56,11 @@ class GpsDataActivity : AppCompatActivity() {
                             val data: LineData = LineData(dataSet)
 
                             lineChartGps.data = data
-                            lineChartGps.description.isEnabled = false
+                            lineChartGps.description.text="^Nord^"
+                            lineChartGps.description.setPosition(lineChartGps.width/2.toFloat(),lineChartGps.height/10.toFloat())
                             lineChartGps.axisRight.setDrawLabels(false)
-                            lineChartGps.xAxis.valueFormatter = LatAxisValueFormatter()
-                            lineChartGps.axisLeft.valueFormatter = LonAxisValueFormatter()
+                            lineChartGps.xAxis.valueFormatter = LonAxisValueFormatter()
+                            lineChartGps.axisLeft.valueFormatter = LatAxisValueFormatter()
                             lineChartGps.animateY(200)
 
                         } else {

@@ -34,9 +34,9 @@ class AccAxisValueFormatter : ValueFormatter() {
     }
 }
 
-class MiniSecAxisValueFormatter : ValueFormatter() {
+class SecAxisValueFormatter : ValueFormatter() {
     override fun getFormattedValue(value: Float): String? {
-        return value.toString()+"ms"
+        return (value/1000).toString()+"s"
     }
 }
 
